@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="js/plugins/select2/css/select2.min.css">
+    <!-- SweetAlert -->
+    <link rel="stylesheet" href="js/plugins/sweetalert2/sweetalert2.min.css">
+    <!-- DataTable -->
+    <link rel="stylesheet" href="js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="js/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="js/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{'css/template/' + ${currentTemplate} + '/css/style.min.css'}">
+    <link rel="stylesheet" href="css/template/custom/custom.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
+
+    <title>Core Layout</title>
+</head>
+<body>
+
+<section layout:fragment="content-core">
+    <!--    Dynamic Content Section -->
+</section>
+
+</body>
+
+<!-- jQuery -->
+<script src="js/plugins/jquery/jquery.min.js"></script>
+<!-- Select2 -->
+<script src="js/plugins/select2/js/select2.full.min.js"></script>
+<!-- SweetAlert -->
+<script src="js/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<!-- DataTable -->
+<script src="js/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js"></script>
+<script src="js/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="js/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="js/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="js/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="js/plugins/jszip/jszip.min.js"></script>
+<script src="js/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="js/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="js/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="js/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="js/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- jsAnimation -->
+<script src="js/plugins/jquery-appear/jquery.appear.min.js"></script>
+
+<script th:src="@{'css/template/' + ${currentTemplate} + '/js/app.min.js'}"></script>
+<script src="js/custom.js"></script>
+
+<script th:inline="javascript">
+    One.helpersOnLoad(['jq-appear']);
+
+   $(document).ready(function() {
+       const alertType = /*[[${alertType}]]*/ '';
+       const alertCategory = /*[[${alertCategory}]]*/ '';
+       const alertMessage = /*[[${alertMessage}]]*/ '';
+
+       if (alertType == 'toast') {
+           sweetAlert(alertCategory, alertMessage)
+       } else if (alertType == 'swal') {
+           Swal.fire({
+               icon: alertCategory,
+               text: alertMessage
+           })
+       }
+
+
+       const focusEl = /*[[${focusElement}]]*/ ''
+       if (focusEl != '') {
+           setTimeout(() => {
+               $('#' + focusEl).focus()
+           }, 300);
+           setTimeout(() => {
+               $('#' + focusEl).addClass('animated bounce is-invalid');
+           }, 800);
+       }
+   })
+</script>
+</html>

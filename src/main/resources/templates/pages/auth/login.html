@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/auth}">
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <form th:action="@{/login}" method="post" class="js-validate-form">
+        <div th:insert="~{fragments/honeypot.html :: honeypot}"></div>
+
+        <div class="py-3">
+            <div class="mb-4">
+                <input type="text" name="username"
+                       class="form-control form-control-lg form-control-alt"
+                       th:classappend="${errorMessage != null} ? ' is-invalid' : ''"
+                       th:value="${username != null} ? ${username} : ''"
+                       placeholder="Username">
+            </div>
+            <div class="mb-4">
+                <input type="password" name="password"
+                       class="form-control form-control-lg form-control-alt"
+                       placeholder="Password">
+            </div>
+            <div class="mb-4">
+                <div class="d-md-flex align-items-md-center justify-content-md-between fs-sm">
+                    <div class="form-check">
+                        <input class="form-check-input optional" type="checkbox" value="1" id="remember"
+                               name="remember" role="button">
+                        <label class="form-check-label user-select-none" for="remember" role="button">Remember
+                            Me</label>
+                    </div>
+                    <div class="py-2">
+                        <a class="fw-medium text-accent" th:href="@{/reset-password}">Forgot
+                            Password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn w-100 btn-accent fs-sm mb-3">
+            <i class="fa fa-fw fa-sign-in-alt me-1"></i> Sign In
+        </button>
+
+        <a th:href="@{/register}" class="fw-medium fs-sm mt-3 text-accent">
+            Don't have an account? Register here
+        </a>
+
+    </form>
+
+</section>
+</body>
+</html>

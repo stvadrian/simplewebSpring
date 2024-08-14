@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/core}">
+<head>
+    <title>Error Page</title>
+</head>
+<body>
+
+<section layout:fragment="content-core">
+
+    <div id="page-container">
+        <main id="main-container">
+            <div class="hero">
+                <div class="hero-inner text-center">
+                    <div class="bg-body-extra-light">
+                        <div class="content content-full">
+                            <div class="py-4">
+                                <h1 class="display-1 fw-bolder text-accent" th:text="${statusCode}"></h1>
+                                <h2 class="h4 bold text-muted mb-0" th:text="${errorTitle}"></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content content-full text-muted fs-sm fw-medium">
+                        <a class="link-fx" th:href="@{/}">Go Back to Main Page</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</section>
+</body>
+</html>

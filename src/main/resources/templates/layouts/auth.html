@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/core}">
+<head>
+    <title>Auth Layout</title>
+</head>
+<body>
+
+<section layout:fragment="content-core">
+    <div id="page-container">
+        <main id="main-container">
+            <div class="hero-static d-flex align-items-center">
+                <div class="w-100">
+                    <div class="bg-body-extra-light">
+                        <div class="content content-full">
+                            <div class="row g-0 justify-content-center">
+                                <div class="col-md-8 col-lg-6 col-xl-4 py-4 px-4 px-lg-5">
+                                    <div>
+                                        <h1 class="h3 mb-1 tracking-wide" th:text="${appName}"></h1>
+                                        <p class="fw-medium fs-sm text-muted mb-3" th:text="${subtitleAuth}"></p>
+                                    </div>
+                                    <section layout:fragment="content"></section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fs-sm text-center text-muted py-3">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</section>
+</body>
+</html>

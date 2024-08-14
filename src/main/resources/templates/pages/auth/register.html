@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/auth}">
+<head>
+    <title>Register Page</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <form th:action="@{/register}" method="POST" class="js-validate-form">
+        <div th:insert="~{fragments/honeypot.html :: honeypot}"></div>
+
+        <div class="py-3">
+            <div class="row items-push">
+                <div class="col-12">
+                    <input type="text" name="mobile"
+                           class="form-control form-control-lg form-control-alt isnumber"
+                           th:classappend="${errorMessage == 'mobile'} ? ' is-invalid' : ''"
+                           th:value="${mobile}"
+                           placeholder="Mobile Number (WhatsApp)">
+                </div>
+                <div class="col-12">
+                    <input type="tel" name="dob" id="dob"
+                           class="form-control form-control-lg form-control-alt custom-date"
+                           th:value="${dob}" placeholder="Birthdate (dd / mm / yyyy)">
+                </div>
+                <div class="col-12">
+                    <input type="text" name="username"
+                           class="form-control form-control-lg form-control-alt"
+                           th:classappend="${errorMessage == 'username'} ? ' is-invalid' : ''"
+                           th:value="${username}" placeholder="Username">
+                </div>
+                <div class="col-12">
+                    <input type="password" name="password" id="password"
+                           class="enhanced form-control form-control-lg form-control-alt"
+                           placeholder="Password">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn w-100 btn-alt-primary fs-sm mb-3">
+            <i class="fa fa-fw fa-user-plus me-1"></i> Sign Up
+        </button>
+
+        <a th:href="@{/login}" class="fw-medium fs-sm mt-3 text-primary">
+            Already have an account? Login here
+        </a>
+
+    </form>
+
+</section>
+</body>
+</html>

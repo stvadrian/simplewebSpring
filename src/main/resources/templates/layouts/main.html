@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/core}">
+<head>
+    <title>Main Layout</title>
+</head>
+<body>
+
+<section layout:fragment="content-core">
+    <header th:insert="~{fragments/header.html :: header}"></header>
+
+    <div id="page-container">
+        <main id="main-container">
+            <section layout:fragment="content"></section>
+        </main>
+    </div>
+
+</section>
+</body>
+</html>
